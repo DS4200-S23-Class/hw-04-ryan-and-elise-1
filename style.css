@@ -1,0 +1,47 @@
+h1 {
+	font-family: Arial;
+	font-size: 30;
+	text-align: center;
+}
+
+h2 {
+	font-family: Arial;
+	font-size: 20;
+	text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container > .column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#col1 {
+	width: 60%;
+}
+
+#col2 {
+	width: 40%;
+}
+
+#scatter {
+	width: 100%;
+	height: 500px;
+}
+
+.border {
+	fill:none;
+	stroke-width:2;
+	stroke: black;
+}
+
+circle {
+	fill:blue;
+	stroke:2;
+}
