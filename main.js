@@ -23,7 +23,7 @@ function drawPoint(x, y) {
         border(circle);
     });
     circle.addEventListener('click', function () { //on click we're adding/removing text about the point's coordinates
-        showText(x, y);
+        showText(x, y, circle);
     });
     circle.addEventListener('mouseover', function () { //when the mouse is on the point it's time to highlight
         highlight(circle);
@@ -46,14 +46,10 @@ function border(x) {
 }
 
 //Shows coordinate points if object not clicked, erases text if already present
-function showText(x, y){
+function showText(x, y, circle){
     let text = document.getElementById("text");
-    if (text.style.display === "block") {
-        text.style.display = "none"; //this is wrong bc if i just click any other point i didn't click before it still goes away :((
-    } else {
-        text.style.display = "block";
-        text.innerHTML = "You just clicked point (" + x + "," + y + ").";
-    }
+    text.style.display = "block";
+    text.innerHTML = "You just clicked point (" + x + "," + y + ").";
 }
 
 //Turns the given object red
