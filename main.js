@@ -1,10 +1,9 @@
 let points = [[1,2],[2,4],[6,2],[9,9]];
-
+//establishes the required initial points
 (function drawInitial(arr) {
     for (let i=0; i<arr.length; i++) {
         drawPoint(arr[i][0], arr[i][1])
     }
-
 })(points)
 
 // Creates a new point
@@ -13,18 +12,23 @@ function drawPoint(x, y) {
     h = svg.clientHeight 
     w = svg.clientWidth
 
-    var circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
-    circle.setAttribute('cx', x * w * .1);
-    circle.setAttribute('cy', y * h * .1);
-    circle.setAttribute('r', 5);
-    circle.setAttribute('style', 'fill: grey;' );
-    circle.addEventListener('click', function () {
+    let circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
+    let truex = x * w * 0.1; //gotta adjust bc the svg dimensions are a bit odd
+    let truey = (h - (y * h * 0.1)); //gotta adjust bc the svg dimensions are a bit odd
+    circle.setAttribute('cx', truex);
+    circle.setAttribute('cy', truey);
+    circle.setAttribute('r', 5); //sets size of points
+    circle.setAttribute('style', 'fill: grey;' ); //sets color of points
+    circle.addEventListener('click', function () { //on click we're adding/removing borders
         border(circle);
     });
-    circle.addEventListener('mouseover', function () {
+    circle.addEventListener('click', function () { //on click we're adding/removing text about the point's coordinates
+        showText(x, y);
+    });
+    circle.addEventListener('mouseover', function () { //when the mouse is on the point it's time to highlight
         highlight(circle);
     });
-    circle.addEventListener('mouseout', function () {
+    circle.addEventListener('mouseout', function () { //when the mouse is not on the point go bye bye
         rmhighlight(circle);
     });
     svg.appendChild(circle);
@@ -33,11 +37,22 @@ function drawPoint(x, y) {
 
 //Adds a border to the given object if it does not have one, removes the border otherwise
 function border(x) {
-    if (x.style.stroke == "black") {
+    if (x.style.stroke === "black") {
         x.style.stroke = "none";
     }
     else {
         x.style.stroke = "black"
+    }
+}
+
+//Shows coordinate points if object not clicked, erases text if already present
+function showText(x, y){
+    let text = document.getElementById("text");
+    if (text.style.display === "block") {
+        text.style.display = "none"; //this is wrong bc if i just click any other point i didn't click before it still goes away :((
+    } else {
+        text.style.display = "block";
+        text.innerHTML = "You just clicked point (" + x + "," + y + ").";
     }
 }
 

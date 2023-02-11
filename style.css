@@ -1,11 +1,13 @@
+body{
+    font-family: "Arial"; /* make the whole page Arial */
+}
+
 h1 {
-	font-family: Arial;
 	font-size: 30;
 	text-align: center;
 }
 
 h2 {
-	font-family: Arial;
 	font-size: 20;
 	text-align: center;
 }
@@ -44,4 +46,8 @@ h2 {
 circle {
 	fill:blue;
 	stroke:2;
+}
+
+text{
+    display: none;
 }
