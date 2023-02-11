@@ -9,11 +9,11 @@ let points = [[1,2],[2,4],[6,2],[9,9]];
 // Creates a new point
 function drawPoint(x, y) {
     let svg = document.getElementById("scatter");
-    h = svg.clientHeight 
-    w = svg.clientWidth
+    h = svg.clientHeight;
+    w = svg.clientWidth;
 
     let circle = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
-    let truex = x * w * 0.1; //gotta adjust bc the svg dimensions are a bit odd
+    let truex = x * 10 + "%"; //gotta adjust bc the svg dimensions are a bit odd
     let truey = (h - (y * h * 0.1)); //gotta adjust bc the svg dimensions are a bit odd
     circle.setAttribute('cx', truex);
     circle.setAttribute('cy', truey);
